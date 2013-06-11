@@ -1,0 +1,294 @@
+{
+  "license": "Apache 2.0",
+  "project_page": "https://github.com/puppetlabs/puppetlabs-razor",
+  "version": "0.4.0",
+  "description": "Razor provisioning system puppet installation module",
+  "source": "git@github.com:puppetlabs/puppetlabs-razor.git",
+  "summary": "Razor puppet module",
+  "dependencies": [
+    {
+      "version_requirement": ">= 2.0.0",
+      "name": "puppetlabs/stdlib"
+    },
+    {
+      "version_requirement": ">= 0.1.0",
+      "name": "puppetlabs/mongodb"
+    },
+    {
+      "version_requirement": ">= 0.1.1",
+      "name": "puppetlabs/nodejs"
+    },
+    {
+      "version_requirement": ">= 0.0.2",
+      "name": "puppetlabs/ruby"
+    },
+    {
+      "version_requirement": ">= 0.2.0",
+      "name": "puppetlabs/tftp"
+    },
+    {
+      "version_requirement": ">= 0.0.5",
+      "name": "puppetlabs/vcsrepo"
+    },
+    {
+      "version_requirement": ">= 2.0.0",
+      "name": "saz/sudo"
+    }
+  ],
+  "author": "Puppet Labs",
+  "name": "puppetlabs-razor",
+  "types": [
+    {
+      "parameters": [
+        {
+          "doc": "The name of the broker.  Values can match `/\\w+/`.",
+          "name": "name"
+        }
+      ],
+      "properties": [
+        {
+          "doc": "The basic property that the resource should be in.  Valid values are `present`, `absent`.",
+          "name": "ensure"
+        },
+        {
+          "doc": "The broker plugin.  Values can match `/\\w+/`.",
+          "name": "plugin"
+        },
+        {
+          "doc": "The metadata of the broker to use",
+          "name": "metadata"
+        },
+        {
+          "doc": "The broker UUID. This property is not expected to be speciified by the user.",
+          "name": "uuid"
+        }
+      ],
+      "doc": "    Manages razor broker.\n",
+      "name": "rz_broker",
+      "providers": [
+        {
+          "doc": "Required binaries: `razor`.",
+          "name": "default"
+        }
+      ]
+    },
+    {
+      "parameters": [
+        {
+          "doc": "The name of the operating system.  Values can match `/\\w+/`.",
+          "name": "name"
+        },
+        {
+          "doc": "The image source, can be either local absolute path or remote http(s) source.",
+          "name": "source"
+        }
+      ],
+      "properties": [
+        {
+          "doc": "The basic property that the resource should be in.  Valid values are `present`, `absent`.",
+          "name": "ensure"
+        },
+        {
+          "doc": "The image version. The value is automatically detected for mk and esx.  Values can match `/[A-Za-z0-9]/`.",
+          "name": "version"
+        },
+        {
+          "doc": "The image type, currently support mk, os, esxi  Valid values are `mk`, `os`, `esxi`.",
+          "name": "type"
+        },
+        {
+          "doc": "The image UUID. This property is not expected to be specified by the user.",
+          "name": "uuid"
+        }
+      ],
+      "doc": "    Manages razor images.\n",
+      "name": "rz_image",
+      "providers": [
+        {
+          "doc": "Required binaries: `curl`, `razor`.",
+          "name": "default"
+        }
+      ]
+    },
+    {
+      "parameters": [
+        {
+          "doc": "The name of the razor model.  Values can match `/\\w+/`.",
+          "name": "name"
+        },
+        {
+          "doc": "The model metadata values.",
+          "name": "metadata"
+        }
+      ],
+      "properties": [
+        {
+          "doc": "The basic property that the resource should be in.  Valid values are `present`, `absent`.",
+          "name": "ensure"
+        },
+        {
+          "doc": "The model description.  Values can match `/\\w+/`.",
+          "name": "description"
+        },
+        {
+          "doc": "The model template  Values can match `/\\w+/`.",
+          "name": "template"
+        },
+        {
+          "doc": "The model UUID. This property is not expected to be speciified by the user.",
+          "name": "uuid"
+        },
+        {
+          "doc": "The model deployment image name.  Values can match `/\\w+/`.",
+          "name": "image"
+        }
+      ],
+      "doc": "    Manages razor models.\n",
+      "name": "rz_model",
+      "providers": [
+        {
+          "doc": "Required binaries: `razor`.",
+          "name": "default"
+        }
+      ]
+    },
+    {
+      "parameters": [
+        {
+          "doc": "The name of the policy.  Values can match `/\\w+/`.",
+          "name": "name"
+        },
+        {
+          "doc": "The policy template name.  Values can match `/\\w+/`.",
+          "name": "template"
+        }
+      ],
+      "properties": [
+        {
+          "doc": "The basic property that the resource should be in.  Valid values are `present`, `absent`.",
+          "name": "ensure"
+        },
+        {
+          "doc": "  Valid values are `true`, `false`.",
+          "name": "enabled"
+        },
+        {
+          "doc": "The policy description.",
+          "name": "description"
+        },
+        {
+          "doc": "The policy tags.",
+          "name": "tags"
+        },
+        {
+          "doc": "The policy broker name.",
+          "name": "broker"
+        },
+        {
+          "doc": "The policy maximum deployment instances.",
+          "name": "maximum"
+        },
+        {
+          "doc": "The policy deployment model.  Values can match `/\\w+/`.",
+          "name": "model"
+        },
+        {
+          "doc": "The policy priority.",
+          "name": "priority"
+        },
+        {
+          "doc": "The policy UUID. This property is not expected to be speciified by the user.",
+          "name": "uuid"
+        }
+      ],
+      "doc": "    Manages razor policy.\n",
+      "name": "rz_policy",
+      "providers": [
+        {
+          "doc": "Required binaries: `razor`.",
+          "name": "default"
+        }
+      ]
+    },
+    {
+      "parameters": [
+        {
+          "doc": "The name of the operating system.  Values can match `/\\w+/`.",
+          "name": "name"
+        }
+      ],
+      "properties": [
+        {
+          "doc": "The basic property that the resource should be in.  Valid values are `present`, `absent`.",
+          "name": "ensure"
+        },
+        {
+          "doc": "The razor tag. (do not use puppet metaparameter tag)  Values can match `/[A-Za-z0-9]/`.",
+          "name": "tag_label"
+        },
+        {
+          "doc": "The tag_matcher rules.",
+          "name": "tag_matcher"
+        },
+        {
+          "doc": "The tag UUID. This property is not expected to be specified by the user.",
+          "name": "uuid"
+        }
+      ],
+      "doc": "    Manages razor tags.\n",
+      "name": "rz_tag",
+      "providers": [
+        {
+          "doc": "Required binaries: `razor`.",
+          "name": "default"
+        }
+      ]
+    }
+  ],
+  "checksums": {
+    "templates/razor.ipxe.erb": "742fd9d09e5bd747a988c52f4710af7d",
+    "lib/puppet_x.rb": "bd329490524195932c45d22de9095d40",
+    "lib/puppet/provider/rz_tag/default.rb": "478133581b7ed5e73bd7da3b79ab3384",
+    "files/ipxe.iso": "1532367a07509cb0c5c1dfb17872ec36",
+    "tests/rz_resource_absent.pp": "97ded9217f265f35cc18389c7ceb79ff",
+    "tests/broker.pp": "98b4e7095096d7c331011060495c62c1",
+    "spec/classes/razor_ruby_spec.rb": "e18b05d5a039cc90e677fa811959f8d4",
+    "lib/puppet_x/puppet_labs/razor.rb": "588dc3a80944a2021628a874d3965a13",
+    "lib/puppet/type/rz_model.rb": "3a3dca048ca177703bfc8c77c50a1f49",
+    "lib/puppet/provider/rz_policy/default.rb": "19d42e40fb1efd13c45a9d9ae19e6293",
+    "files/menu.c32": "ff0486f25f3ef3e59562ba6404cf1c4d",
+    "CHANGELOG": "15aff61b116c592b7ac81f277ddb9061",
+    "Rakefile": "0254db5d3fc38c67a2c160d7296a24f8",
+    "lib/puppet/type/rz_broker.rb": "76d091f3cc4f93e5d07e1b9ee7803abb",
+    "tests/openstack.pp": "75bc2335c816e0b889ece354e1636fc0",
+    "spec/classes/razor_nodejs_spec.rb": "99898d4a7a758ff7066076cdeac41097",
+    "lib/puppet/type/rz_image.rb": "bf8b97bbc5e162e6adac2b0ee19b0a93",
+    "tests/rz_resource.pp": "aa74feaf614cebbc8557f9d524d0c7c3",
+    "templates/razor_server.erb": "1b2127967f143e717c68bf069e874fbc",
+    "spec/spec_helper.rb": "0db89c9a486df193c0e40095422e19dc",
+    "manifests/init.pp": "91c4e64688ece91092cd2344bf495d9c",
+    "LICENSE": "b3f8a01d8699078d82e8c3c992307517",
+    "tests/mk_image.pp": "aa3d676a29c3eefd36419db47dc5a36e",
+    "tests/cleanup.pp": "73599c89215b6aad3eedfb7173737131",
+    "README.md": "5c70fd1adaac1f018d2b8fbc5bf78cb3",
+    "lib/puppet_x/puppet_labs.rb": "0ceaa5c18e4767ac502a0d9c72a272d6",
+    "lib/puppet/provider/rz_model/default.rb": "58c1619d6b71aa60bea52c0f36d15a86",
+    "tests/system.pp": "2273efdcbab9ce1abd7f6774e7de280f",
+    "spec/classes/razor_spec.rb": "6ddcdd906a7435a8ad9fa8614c03cc29",
+    "Modulefile": "a293f1be96e37514beaacfeb16adbb28",
+    "manifests/tftp.pp": "f895d5e483958dd3cab9fcf7b5d03903",
+    "lib/puppet/type/rz_tag.rb": "7a819a10f31231dd58a0e6d27800864b",
+    "spec/classes/razor_tftp_spec.rb": "e107c9ec13db72b9093c0f79b3f235e0",
+    "lib/puppet/provider/rz_image/default.rb": "772ad276165306544df8e408ef78be83",
+    "files/pxelinux.0": "a13943e52958d1789bc326a7a3917959",
+    "files/ipxe.lkrn": "6a259681b88c4b3b9e59ab75f5131492",
+    "tests/init.pp": "cb2e1d749ce822821a3df90ed3734b88",
+    "templates/razor.erb": "051cc129922a733bcfcc636e87aee950",
+    "lib/puppet/type/rz_policy.rb": "1cc0fafbc84e3991aee5657b5a2e0f59",
+    "files/undionly.kpxe": "72a608d477774aab233df576141f5afc",
+    "files/pxelinux.cfg/default": "a972e6a73fcc17fb307bd05b9a9b8f7f",
+    "manifests/ruby.pp": "e6f2f29af1ef437115a95142df73e7f2",
+    "manifests/nodejs.pp": "3e8eb1ebec9701b7a0882d03143426b2",
+    "lib/puppet/provider/rz_broker/default.rb": "0048c519aad19feb311b9f6e9cc7bafd"
+  }
+}
